@@ -11,7 +11,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-       echo "index";
+        echo "Resource Controller index";
     }
 
     /**
@@ -19,7 +19,7 @@ class ResourceController extends Controller
      */
     public function create()
     {
-        echo "create";
+        echo "Resource Controller create";
     }
 
     /**

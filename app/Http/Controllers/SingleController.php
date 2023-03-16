@@ -11,6 +11,6 @@ class SingleController extends Controller
      */
     public function __invoke(Request $request)
     {
-        echo "course";
+        echo "SIngle Controller showing";
     }
 }

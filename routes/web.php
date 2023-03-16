@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ResourceController;
 /*
@@ -14,28 +15,29 @@ use App\Http\Controllers\ResourceController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/about', function () {
     return view('layouts.about');
-
 });
-Route::get("/home",function(){
+Route::get("/home", function () {
 
     return view('layouts.home');
-
-    });
-
-Route::get("/demo/{name}/{id?}",function($name,$id=null){
-$data=compact('name','id');
-return view("demo")->with($data);
-
 });
-Route::get("/first/{name?}",function($name=null){
-    $data1="  <h2>sazzad</h2>";
-    $data2=compact('name','data1');
+
+Route::get("/demo/{name}/{id?}", function ($name, $id = null) {
+    $data = compact('name', 'id');
+    return view("demo")->with($data);
+});
+Route::get("/first/{name?}", function ($name = null) {
+    $data1 = "  <h2>sazzad</h2>";
+    $data2 = compact('name', 'data1');
     return view("first")->with($data2);
+});
+//3 types of controller route is shown here
+Route::get('/', [BasicController::class, 'index']);
+Route::get('/course', SingleController::class);
+Route::resource('/photo', ResourceController::class);
 
-    });
-
-Route::get('/',[BasicController::class, 'index']);
-Route::get('/course',SingleController::class);
-Route::resource('/photo',ResourceController::class);
+//form route
+Route::get('/register', [FormController::class, 'index']);
+Route::post('/register', [FormController::class, 'register']);
