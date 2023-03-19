@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
-use App\Http\Controllers\FormController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ResourceController;
+use App\Models\Customer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +42,14 @@ Route::resource('/photo', ResourceController::class);
 //form route
 Route::get('/register', [FormController::class, 'index']);
 Route::post('/register', [FormController::class, 'register']);
+
+//model
+// Route::get('/customer',function(){
+// $customer=Customer::all();
+// echo "<pre>";
+// print_r($customer);
+// });
+
+//controller data  insert using form
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::post('/customer',[CustomerController::class,'store']);
