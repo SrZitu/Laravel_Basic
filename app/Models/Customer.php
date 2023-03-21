@@ -9,5 +9,5 @@ class Customer extends Model
 {
     use HasFactory;
     protected $table="customer"; //laravel k bole dissi table name
-    protected $primary_key="customer_id "; //primary key ki seta boltesi
+    protected $primaryKey ='id'; //primary key ki seta boltesi
 }

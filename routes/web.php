@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SingleController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\ResourceController;
 use App\Models\Customer;
 /*
@@ -17,29 +18,34 @@ use App\Models\Customer;
 |
 */
 
-Route::get('/about', function () {
-    return view('layouts.about');
-});
-Route::get("/home", function () {
+// Route::get('/about', function () {
+//     return view('layouts.about');
+// });
+// Route::get("/home", function () {
 
-    return view('layouts.home');
-});
+//     return view('layouts.home');
+// });
 
-Route::get("/demo/{name}/{id?}", function ($name, $id = null) {
-    $data = compact('name', 'id');
-    return view("demo")->with($data);
-});
-Route::get("/first/{name?}", function ($name = null) {
-    $data1 = "  <h2>sazzad</h2>";
-    $data2 = compact('name', 'data1');
-    return view("first")->with($data2);
-});
+// Route::get("/demo/{name}/{id?}", function ($name, $id = null) {
+//     $data = compact('name', 'id');
+//     return view("demo")->with($data);
+// });
+// Route::get("/first/{name?}", function ($name = null) {
+//     $data1 = "  <h2>sazzad</h2>";
+//     $data2 = compact('name', 'data1');
+//     return view("first")->with($data2);
+// });
+
 //3 types of controller route is shown here
 Route::get('/', [BasicController::class, 'index']);
 Route::get('/course', SingleController::class);
 Route::resource('/photo', ResourceController::class);
 
 //form route
+Route::get('/', function () {
+    return view('index');
+});
+
 Route::get('/register', [FormController::class, 'index']);
 Route::post('/register', [FormController::class, 'register']);
 
@@ -51,5 +57,7 @@ Route::post('/register', [FormController::class, 'register']);
 // });
 
 //controller data  insert using form
-Route::get('/customer', [CustomerController::class, 'index']);
-Route::post('/customer',[CustomerController::class,'store']);
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer', [CustomerController::class, 'view']);
+Route::post('/customer', [CustomerController::class, 'store']);

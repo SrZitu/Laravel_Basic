@@ -7,15 +7,12 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function create()
     {
         return view('customer');
     }
     public function store(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());
-
         $customer = new Customer();
         $customer->name = $request['name'];
         $customer->email = $request['email'];
@@ -27,5 +24,23 @@ class CustomerController extends Controller
         $customer->name = $request['name'];
         $customer->password = md5($request['password']);
         $customer->save();
+
+        return redirect("/customer");
+    }
+
+    public function view()
+    {
+        $customers = customer::all();
+        $data = compact('customers');
+        return view('customer-view')->with($data);
+    }
+    public function delete($id)
+    {
+        $customer = Customer::find($id);
+        if (!is_null($customer)) {
+            $customer->delete();
+        }
+        return redirect('customer');
+
     }
 }

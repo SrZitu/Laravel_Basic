@@ -13,10 +13,38 @@
 </head>
 
 <body class="bg-dark">
+    <div class="container-fluid bg-dark">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white">WsCube Tech</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}" style="color: white">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/register') }}" style="color: white">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/customer') }}" style="color: white">Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/upload') }}" style="color: white">Upload</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
     <form action="{{ url('/') }}/customer" method="POST">
         @csrf
         <div class="container mt-4 card p-3 bg-white">
-            <h3 class="text-center text-primary">sending data to model</h3>
+            <h3 class="text-center text-primary">Customer Registration Form</h3>
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Name:</label>
