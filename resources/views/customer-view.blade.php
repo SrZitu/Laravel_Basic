@@ -54,6 +54,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
+                    <th>Address</th>
                     <th>DOB</th>
                     <th>State</th>
                     <th>Country</th>
@@ -75,6 +76,7 @@
                                 Other
                             @endif
                         </td>
+                        <td>{{ $customer->address }}</td>
                         <td>{{ $customer->dob }}</td>
                         <td>{{ $customer->state }}</td>
                         <td>{{ $customer->country }}</td>
@@ -91,8 +93,11 @@
 
                         </td>
                         <td>
-                            <a href="{{ route('customer.delete',['id'=> $customer->id]) }}">
-                                <button class="btn btn-outline-danger btn-sm">delete</button>
+                            <a href="{{ route('customer.delete', ['id' => $customer->id]) }}">
+                                <button class="btn btn-danger btn-outline-light btn-sm">delete</button>
+                            </a>
+                            <a href="{{ route('customer.edit', ['id' => $customer->id]) }}">
+                                <button class="btn btn-primary btn-outline-light btn-sm">edit</button>
                             </a>
                         </td>
 

@@ -41,14 +41,15 @@
             </nav>
         </div>
     </div>
-    <form action="{{ url('/') }}/customer" method="POST">
+    <form action="{{ $url }}" method="POST">
         @csrf
         <div class="container mt-4 card p-3 bg-white">
             <h3 class="text-center text-primary">Customer Registration Form</h3>
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Name:</label>
-                    <input type="text" name="name" id="" class="form-control" />
+                    <input type="text" name="name" id="" class="form-control"
+                        value="{{ $customer->name }}" />
                     <span class="text-danger">
                         @error('name')
                             {{ $message }}
@@ -57,7 +58,8 @@
                 </div>
                 <div class="form-group col-md-6 required">
                     <label for="">Email:</label>
-                    <input type="email" name="email" id="" class="form-control" />
+                    <input type="email" name="email" id="" class="form-control"
+                        value="{{ $customer->email }}" />
                     <span class="text-danger">
                         @error('email')
                             {{ $message }}
@@ -88,7 +90,8 @@
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Country:</label>
-                    <input type="text" name="country" id="" class="form-control" />
+                    <input type="text" name="country" id="" class="form-control"
+                        value="{{ $customer->country }}" />
                     <span class="text-danger">
                         @error('country')
                             {{ $message }}
@@ -97,7 +100,8 @@
                 </div>
                 <div class="form-group col-md-6 required">
                     <label for="">State:</label>
-                    <input type="text" name="state" id="" class="form-control" />
+                    <input type="text" name="state" id="" class="form-control"
+                        value="{{ $customer->state }}" />
                     <span class="text-danger">
                         @error('state')
                             {{ $message }}
@@ -108,7 +112,7 @@
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="">Address:</label>
-                    <textarea name="address" class="form-control" id="" rows="3"></textarea>
+                    <textarea name="address" class="form-control" id="" rows="3" value="{{ $customer->address }}"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -116,23 +120,30 @@
                     <label for="">Gender:</label><br />
                     <div class="form-check form-check-inline">
                         <label for="" class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender" value="M">Male
+                            <input type="radio" class="form-check-input" name="gender" value="M"
+                                @if (isset($customer->gender)) {{ $customer->gender == 'M' ? 'checked' : '' }} @endif>Male
+
+
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
                         <label for="" class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender" value="F">Female
+                            <input type="radio" class="form-check-input" name="gender" value="F"
+                                @if (isset($customer->gender)) {{ $customer->gender == 'F' ? 'checked' : '' }} @endif>Female
+
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
                         <label for="" class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender" value="O">Other
+                            <input type="radio" class="form-check-input" name="gender" value="O"
+                                @if (isset($customer->gender)) {{ $customer->gender == 'O' ? 'checked' : '' }} @endif>Other
+
                         </label>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Date of birth:</label>
-                    <input type="date" name="dob" id="" class="form-control" />
+                    <input type="date" name="dob" id="" class="form-control" value="{{ $customer->dob}}"  />
                 </div>
             </div>
             <div class="row">
