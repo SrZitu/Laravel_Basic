@@ -34,9 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/customer') }}" style="color: white">Customer</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/upload') }}" style="color: white">Upload</a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -77,7 +75,7 @@
                             @endif
                         </td>
                         <td>{{ $customer->address }}</td>
-                        <td>{{get_formatted_date($customer->dob,"d-M-Y")}}</td>
+                        <td>{{ $customer->dob }}</td>
                         <td>{{ $customer->state }}</td>
                         <td>{{ $customer->country }}</td>
                         <td>

@@ -44,12 +44,12 @@
     <form action="{{ $url }}" method="POST">
         @csrf
         <div class="container mt-4 card p-3 bg-white">
-            <h3 class="text-center text-primary">Customer Registration Form</h3>
+            <h3 class="text-center text-primary">{{ $title }}</h3>
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Name:</label>
                     <input type="text" name="name" id="" class="form-control"
-                        value="{{ $customer->name }}" />
+                        value="{{ old('name', isset($customer->name) ? $customer->name : '') }}" />
                     <span class="text-danger">
                         @error('name')
                             {{ $message }}
@@ -59,7 +59,7 @@
                 <div class="form-group col-md-6 required">
                     <label for="">Email:</label>
                     <input type="email" name="email" id="" class="form-control"
-                        value="{{ $customer->email }}" />
+                        value="{{ old('email', isset($customer->email) ? $customer->email : '') }}" />
                     <span class="text-danger">
                         @error('email')
                             {{ $message }}
@@ -91,7 +91,7 @@
                 <div class="form-group col-md-6 required">
                     <label for="">Country:</label>
                     <input type="text" name="country" id="" class="form-control"
-                        value="{{ $customer->country }}" />
+                        value="{{ old('country', isset($customer->country) ? $customer->country : '') }}" />
                     <span class="text-danger">
                         @error('country')
                             {{ $message }}
@@ -101,7 +101,7 @@
                 <div class="form-group col-md-6 required">
                     <label for="">State:</label>
                     <input type="text" name="state" id="" class="form-control"
-                        value="{{ $customer->state }}" />
+                        value="{{ old('state', isset($customer->state) ? $customer->state : '') }}" />
                     <span class="text-danger">
                         @error('state')
                             {{ $message }}
@@ -112,7 +112,7 @@
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="">Address:</label>
-                    <textarea name="address" class="form-control" id="" rows="3" value="{{ $customer->address }}"></textarea>
+                    <textarea name="address" class="form-control" id="" rows="3">{{ old('address', isset($customer->address) ? $customer->address : '') }}</textarea>
                 </div>
             </div>
             <div class="row">
@@ -143,7 +143,8 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Date of birth:</label>
-                    <input type="date" name="dob" id="" class="form-control" value="{{ $customer->dob}}"  />
+                    <input type="date" name="dob" id="" class="form-control"
+                        value="{{ old('dob', isset($customer->dob) ? $customer->dob : '') }}" />
                 </div>
             </div>
             <div class="row">
