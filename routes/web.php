@@ -80,7 +80,3 @@ Route::get('destroy-session', function () {
     session()->forget(['name', 'id']);
     return redirect('get-all-session');
 });
-
-
-
-

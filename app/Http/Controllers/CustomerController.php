@@ -11,7 +11,7 @@ class CustomerController extends Controller
     {
         $url = url('/customer');
         $title = "Customer Registartion";
-        $data = compact('url','title');
+        $data = compact('url', 'title');
         return view('customer')->with($data);
     }
     public function store(Request $request)

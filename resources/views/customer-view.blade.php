@@ -51,7 +51,7 @@
         <a href="{{ route('customer.create') }}">
             <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
         </a>
-        <a href="{{ route('customer.trash')}}">
+        <a href="{{ route('customer.trash') }}">
             <button class="btn btn-danger d-line-block m-2 float-right"> Go to trash </button>
         </a>
 
