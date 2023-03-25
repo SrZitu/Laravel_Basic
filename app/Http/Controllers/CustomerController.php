@@ -37,6 +37,33 @@ class CustomerController extends Controller
         $data = compact('customers');
         return view('customer-view')->with($data);
     }
+
+    public function trash()
+    {
+        $customers = Customer::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
+    }
+
+    public function restore($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->restore();
+        }
+        return redirect('customer');
+    }
+
+    public function forceDelete($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->forceDelete();
+        }
+        return redirect()->back();
+    }
+
+
     public function delete($id)
     {
         $customer = Customer::find($id);
@@ -45,6 +72,7 @@ class CustomerController extends Controller
         }
         return redirect('customer');
     }
+
     public function edit($id)
     {
         $customer = Customer::find($id);

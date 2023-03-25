@@ -7,6 +7,7 @@ use App\Http\Controllers\SingleController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ResourceController;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,17 +50,37 @@ Route::get('/', function () {
 Route::get('/register', [FormController::class, 'index']);
 Route::post('/register', [FormController::class, 'register']);
 
-//model
-// Route::get('/customer',function(){
-// $customer=Customer::all();
-// echo "<pre>";
-// print_r($customer);
-// });
-
 //controller data  insert using form
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
 Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer/forceDelete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.forceDelete');
+Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::get('/customer', [CustomerController::class, 'view']);
+Route::get('/customer/trash', [CustomerController::class, 'trash'])->name('customer.trash');;
 Route::post('/customer', [CustomerController::class, 'store']);
+
+
+//for session
+Route::get('get-all-session', function () {
+    $session = session()->all();
+    p($session); //helper function a call jasse oi format a print korbe
+});
+
+//if we want to set a session
+Route::get('set-session', function (Request $request) {
+    $request = session()->put('name', 'sazzad');
+    $request = session()->put('id', '1234');
+    return redirect('get-all-session');
+});
+
+//destroying all session
+Route::get('destroy-session', function () {
+    session()->forget(['name', 'id']);
+    return redirect('get-all-session');
+});
+
+
+
+

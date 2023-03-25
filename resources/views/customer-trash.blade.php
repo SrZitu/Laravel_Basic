@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Customer Trash</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,9 +51,6 @@
         <a href="{{ route('customer.create') }}">
             <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
         </a>
-        <a href="{{ route('customer.trash')}}">
-            <button class="btn btn-danger d-line-block m-2 float-right"> Go to trash </button>
-        </a>
 
         <h2 class="text-center">Displaying Data</h2>
         <table class="table table-hover table-bordered ">
@@ -101,11 +98,11 @@
 
                         </td>
                         <td>
-                            <a href="{{ route('customer.delete', ['id' => $customer->id]) }}">
-                                <button class="btn btn-danger btn-outline-light btn-sm">Trash</button>
+                            <a href="{{ route('customer.forceDelete', ['id' => $customer->id]) }}">
+                                <button class="btn btn-danger btn-outline-light btn-sm">Delete</button>
                             </a>
-                            <a href="{{ route('customer.edit', ['id' => $customer->id]) }}">
-                                <button class="btn btn-primary btn-outline-light btn-sm">edit</button>
+                            <a href="{{ route('customer.restore', ['id' => $customer->id]) }}">
+                                <button class="btn btn-primary btn-outline-light btn-sm">Restore</button>
                             </a>
                         </td>
 
