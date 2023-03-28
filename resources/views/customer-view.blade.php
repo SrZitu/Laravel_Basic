@@ -47,72 +47,89 @@
             </nav>
         </div>
     </div>
-    <div class="container mt-4">
-        <a href="{{ route('customer.create') }}">
-            <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
-        </a>
-        <a href="{{ route('customer.trash') }}">
-            <button class="btn btn-danger d-line-block m-2 float-right"> Go to trash </button>
-        </a>
 
-        <h2 class="text-center">Displaying Data</h2>
-        <table class="table table-hover table-bordered ">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Address</th>
-                    <th>DOB</th>
-                    <th>State</th>
-                    <th>Country</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($customers as $customer)
+    <div class="container">
+        <div class="row m-2">
+
+            <form action="" class="col-8">
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control" placeholder="Name or Email"
+                        value="{{ $search }}">
+                </div>
+                <button class="btn btn-success" type="submit">Search</button>
+                <a href="{{ url('/customer') }}">
+                    <button type="button" class="btn btn-primary">Reset</button>
+                </a>
+            </form>
+
+            <div class="col-3">
+                <a href="{{ route('customer.create') }}">
+                    <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
+                </a>
+                <a href="{{ route('customer.trash') }}">
+                    <button class="btn btn-danger d-line-block m-2 float-right"> Go to trash </button>
+                </a>
+            </div>
+
+            <h2 class="text-center">Displaying Data</h2>
+            <table class="table table-hover table-bordered ">
+                <thead>
                     <tr>
-                        <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->email }}</td>
-                        <td>
-                            @if ($customer->gender == 'M')
-                                male
-                            @elseif ($customer->gender == 'F')
-                                Female
-                            @else
-                                Other
-                            @endif
-                        </td>
-                        <td>{{ $customer->address }}</td>
-                        <td>{{ $customer->dob }}</td>
-                        <td>{{ $customer->state }}</td>
-                        <td>{{ $customer->country }}</td>
-                        <td>
-                            @if ($customer->status == '1')
-                                <a href="">
-                                    <span class="badge badge-success rounded-pill">Active</span>
-                                </a>
-                            @else
-                                <a href="">
-                                    <span class="badge badge-danger rounded-pill">Inactive</span>
-                                </a>
-                            @endif
-
-                        </td>
-                        <td>
-                            <a href="{{ route('customer.delete', ['id' => $customer->id]) }}">
-                                <button class="btn btn-danger btn-outline-light btn-sm">Trash</button>
-                            </a>
-                            <a href="{{ route('customer.edit', ['id' => $customer->id]) }}">
-                                <button class="btn btn-primary btn-outline-light btn-sm">edit</button>
-                            </a>
-                        </td>
-
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>DOB</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($customers as $customer)
+                        <tr>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td>
+                                @if ($customer->gender == 'M')
+                                    male
+                                @elseif ($customer->gender == 'F')
+                                    Female
+                                @else
+                                    Other
+                                @endif
+                            </td>
+                            <td>{{ $customer->address }}</td>
+                            <td>{{ $customer->dob }}</td>
+                            <td>{{ $customer->state }}</td>
+                            <td>{{ $customer->country }}</td>
+                            <td>
+                                @if ($customer->status == '1')
+                                    <a href="">
+                                        <span class="badge badge-success rounded-pill">Active</span>
+                                    </a>
+                                @else
+                                    <a href="">
+                                        <span class="badge badge-danger rounded-pill">Inactive</span>
+                                    </a>
+                                @endif
+
+                            </td>
+                            <td>
+                                <a href="{{ route('customer.delete', ['id' => $customer->id]) }}">
+                                    <button class="btn btn-danger btn-outline-light btn-sm">Trash</button>
+                                </a>
+                                <a href="{{ route('customer.edit', ['id' => $customer->id]) }}">
+                                    <button class="btn btn-primary btn-outline-light btn-sm">edit</button>
+                                </a>
+                            </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
