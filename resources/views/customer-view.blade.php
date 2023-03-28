@@ -75,6 +75,7 @@
             <table class="table table-hover table-bordered ">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Gender</th>
@@ -89,6 +90,7 @@
                 <tbody>
                     @foreach ($customers as $customer)
                         <tr>
+                            <td>{{ $customer->id }}</td>
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->email }}</td>
                             <td>
@@ -131,8 +133,13 @@
             </table>
         </div>
     </div>
-
-
+    @if ($customers instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
+        <div class="d-flex justify-content-center">
+            <ul class="pagination">
+                {{ $customers->links() }}
+            </ul>
+        </div>
+    @endif
 </body>
 
 </html>
