@@ -8,6 +8,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\ResourceController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,4 +81,10 @@ Route::get('set-session', function (Request $request) {
 Route::get('destroy-session', function () {
     session()->forget(['name', 'id']);
     return redirect('get-all-session');
+});
+
+//for laravel localization
+Route::get('/{lang?}',function($lang=null){
+App::setLocale($lang);
+return view('welcome');
 });

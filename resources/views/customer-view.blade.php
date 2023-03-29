@@ -41,7 +41,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/customer') }}" style="color: white">Customer</a>
                         </li>
-
+                        <a class="nav-link" href="{{ url('/en') }}" style="color: red">English</a>
+                        <a class="nav-link" href="{{ url('/ban') }}" style="color: rgb(226, 44, 44)">Bangla</a>
+                        <a class="nav-link" href="{{ url('/hi') }}" style="color: rgb(247, 72, 72)">Hindi</a>
                     </ul>
                 </div>
             </nav>
@@ -56,6 +58,7 @@
                     <input type="text" name="search" class="form-control" placeholder="Name or Email"
                         value="{{ $search }}">
                 </div>
+
                 <button class="btn btn-success" type="submit">Search</button>
                 <a href="{{ url('/customer') }}">
                     <button type="button" class="btn btn-primary">Reset</button>
@@ -66,12 +69,13 @@
                 <a href="{{ route('customer.create') }}">
                     <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
                 </a>
+
                 <a href="{{ route('customer.trash') }}">
                     <button class="btn btn-danger d-line-block m-2 float-right"> Go to trash </button>
                 </a>
             </div>
 
-            <h2 class="text-center">Displaying Data</h2>
+            <h1>@lang('lang.welcome')</h1>
             <table class="table table-hover table-bordered ">
                 <thead>
                     <tr>
