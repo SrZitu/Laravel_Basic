@@ -131,15 +131,16 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($customers instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
+            <div class="d-flex justify-content-center">
+                <ul class="pagination">
+                    {{ $customers->links() }}
+                </ul>
+            </div>
+        @endif
         </div>
     </div>
-    @if ($customers instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
-        <div class="d-flex justify-content-center">
-            <ul class="pagination">
-                {{ $customers->links() }}
-            </ul>
-        </div>
-    @endif
+
 </body>
 
 </html>
